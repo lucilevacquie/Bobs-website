@@ -1,16 +1,16 @@
 import React from "react"
 import styled from "styled-components"
-import Spaceship3 from "../assets/spaceship3.svg"
+import BobSpaceship from "../assets/bob.svg"
 
 const Image = styled.img`
     position: fixed;
-    width: 100px;
-    top: -5rem;
-    left: -2rem;
+    width: 130px;
+    top: 25%;
+    left: 43%;
 `;
 
 const Layer3 = ({myRef}) => {
-    return <Image ref={myRef} src={Spaceship3} alt="spaceship 3"/>
+    return <Image ref={myRef} src={BobSpaceship} alt="spaceship 3"/>
 }
 
 export default Layer3;

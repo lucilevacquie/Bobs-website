@@ -5,6 +5,8 @@ import Spaceship2 from "../assets/spaceship2.svg"
 const Image = styled.img`
     position: fixed;
     width: 100px;
+    top: 3rem;
+    right: -8rem;
 `;
 
 const Layer2 = ({myRef}) => {
