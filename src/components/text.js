@@ -5,29 +5,30 @@ import Linkedin from "../assets/linkedin.png"
 
 const Container = styled.div`
     position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
     width: 100%;
-    top: -25%;
+    top: -24%;
     color: yellow;
 `;
 
 const Name = styled.div`
     font-size: 24px;
-    text-align: center;
 `;
 
 const Role = styled.div`
     font-size: 20px;
-    text-align: center;
 `;
 
-const Email = styled.div`
+const Email = styled.a`
     font-size: 18px;
-    text-align: center;
+    text-decoration: none;
+    color: yellow;
 `;
 
-const Links = styled.div`
-    text-align: center;
-`;
+const Links = styled.div``;
 
 const Logo = styled.img`
     width: 30px;
@@ -38,8 +39,8 @@ const Text = ({myRef}) => {
     return (
         <Container ref={myRef}>
             <Name>Bob Hall</Name>
-            <Role>Senior Software Engineer</Role>
-            <Email>bob.hall@gmail.com</Email>
+            <Role>Full Stack Software Engineer</Role>
+            <Email href="mailto:bob@bob-hall.com" target="_blank" rel="noreferrer">bob@bob-hall.com</Email>
             <Links>
                 <a href="https://www.linkedin.com/in/bob-hall-5503b162/" target="_blank" rel="noreferrer">
                     <Logo src={Linkedin} alt="LinkedIn"/>
