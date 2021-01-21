@@ -15,24 +15,42 @@ const Container = styled.div`
 `;
 
 const Name = styled.div`
-    font-size: 24px;
+    font-size: 20px;
+    @media only screen and (max-width: 480px){
+        font-size: 18px;
+    }
 `;
 
 const Role = styled.div`
-    font-size: 20px;
+    font-size: 18px;
+    margin: 5px;
+    @media only screen and (max-width: 768px){
+        font-size: 14px;
+        margin: 4px;
+    }
+    @media only screen and (max-width: 480px){
+        font-size: 10px;
+        margin: 3px;
+    }
 `;
 
 const Email = styled.a`
-    font-size: 18px;
+    font-size: 16px;
     text-decoration: none;
     color: yellow;
+    @media only screen and (max-width: 768px){
+        font-size: 14px;
+    }
+    @media only screen and (max-width: 480px){
+        font-size: 10px;
+    }
 `;
 
 const Links = styled.div``;
 
 const Logo = styled.img`
-    width: 30px;
-    margin: 5px;
+    width: 20px;
+    margin: 0 2.5px;
 `;
 
 const Text = ({myRef}) => {

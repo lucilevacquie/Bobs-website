@@ -10,15 +10,29 @@ const Container = styled.div`
 const Image = styled.img`
     position: fixed;
     width: 100%;
-    z-index:1;
     transform: scale(0);
+    top: 80px;
+    @media only screen and (max-width: 1200px){
+        top: 130px;
+    }
+    @media only screen and (max-width: 1024px){
+        top: 190px;
+    }
+    @media only screen and (max-width: 768px){
+        top: 250px;
+    }
+    @media only screen and (max-width: 480px){
+        top: 300px;
+    }
 `;
 
 const Layer3 = ({myRef}) => {
     return (
-        <Container>
-            <Image ref={myRef} src={BobSpaceship} alt="spaceship 3"/>
-        </Container>
+        <div>
+            <Container>
+                <Image ref={myRef} src={BobSpaceship} alt="spaceship 3"/>
+            </Container>
+        </div>
     )
 }
 

@@ -1,4 +1,4 @@
-import React, {useRef, useEffect, useState} from "react"
+import React, {useRef, useEffect} from "react"
 import styled from "styled-components"
 import Layer1 from "./components/layer1"
 import Layer2 from "./components/layer2"
@@ -30,7 +30,7 @@ const multipliers = {
     },
     layer4:{
         x: 0,
-        y: 0.1,
+        y: 0,
         s: 0.0008
     },
     text:{
@@ -41,35 +41,45 @@ const multipliers = {
 
 }
 
-const maxYLayer4 = 180;
-const maxSLayer4 = 0.85;
+// const maxYLayer4 = 300;
+let maxSLayer4 = 0;
 const scrollStartLayer4 = 888;
 
-const Parallax = () => {
 
+
+const Parallax = () => {
+    
     const refLayer1 = useRef()
     const refLayer2 = useRef()
     const refLayer3 = useRef()
     const refLayer4 = useRef()
     const refText = useRef()
-
-    const [scale, setScale] = useState()
-
     
-
+    
     useEffect(() => {
-        const calculatePosition = (ref, multiplierX, multiplierY, multiplierS, currentScrollPosition, maxPosition, maxScale, scrollStart) => {
-            let positionX = currentScrollPosition * multiplierX
-            let positionY = currentScrollPosition * multiplierY
-            setScale(currentScrollPosition * multiplierS)
-
+        const calculatePosition = (ref, multiplierX, multiplierY, multiplierS, currentScrollPosition, maxScale, scrollStart, maxPosition) => {
+            
+            if(window.screen.availWidth < 1024){
+                maxSLayer4 = 0.75
+            } else {
+                maxSLayer4 = 0.55
+            }
+            console.log(window.screen.availWidth)
             if(scrollStart){
+                if(currentScrollPosition < scrollStart){
+                    ref.style.transform = `scale(0)`
+                    return
+                }
                 currentScrollPosition = currentScrollPosition - scrollStart
-                setScale(currentScrollPosition * multiplierS)
             }
 
+            let positionX = currentScrollPosition * multiplierX
+            let positionY = currentScrollPosition * multiplierY
+            let scale = currentScrollPosition * multiplierS
+
+
             if(maxScale && scale > maxScale){
-                setScale(maxScale)
+                scale = maxScale
             }
 
             if(maxPosition && positionY > maxPosition){
@@ -83,13 +93,12 @@ const Parallax = () => {
             calculatePosition(refLayer1.current, multipliers.layer1.x, multipliers.layer1.y, multipliers.layer1.s, pos)
             calculatePosition(refLayer2.current, multipliers.layer2.x, multipliers.layer2.y, multipliers.layer2.s, pos)
             calculatePosition(refLayer3.current, multipliers.layer3.x, multipliers.layer3.y, multipliers.layer3.s, pos)
-            calculatePosition(refLayer4.current, multipliers.layer4.x, multipliers.layer4.y, multipliers.layer4.s, pos, maxYLayer4, maxSLayer4, scrollStartLayer4)
+            calculatePosition(refLayer4.current, multipliers.layer4.x, multipliers.layer4.y, multipliers.layer4.s, pos, maxSLayer4, scrollStartLayer4)
             calculatePosition(refText.current, multipliers.text.x, multipliers.text.y, multipliers.text.s, pos)
         }
 
         const callbackFunc = () => {
             const currentScrollPosition = window.scrollY
-            console.log(currentScrollPosition)
             setTimeout(() => {
                 updatePosition(currentScrollPosition)
             }, 0)
@@ -101,7 +110,7 @@ const Parallax = () => {
             document.removeEventListener("scroll", callbackFunc)
         }
 
-    }, [scale])
+    }, [])
 
     return(
         <ParallaxContainer>
