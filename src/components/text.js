@@ -12,6 +12,7 @@ const Container = styled.div`
     width: 100%;
     top: -24%;
     color: yellow;
+    z-index: 4;
 `;
 
 const Name = styled.div`

@@ -5,11 +5,19 @@ import Layer2 from "./components/layer2"
 import Layer3 from "./components/layer3"
 import Layer4 from "./components/layer4"
 import Text from "./components/text"
+import BackgroundImg from "./assets/StaticBackground.svg"
 
 const ParallaxContainer = styled.div`
     position: relative;
     width: 100%;
     height: 100%;
+`;
+
+const StaticBackground = styled.img`
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
 `;
 
 const multipliers = {
@@ -31,19 +39,19 @@ const multipliers = {
     layer4:{
         x: 0,
         y: 0,
-        s: 0.0008
+        s: 0.0006
     },
     text:{
         x: 0,
         y: 0.1,
-        s: 0.0008
+        s: 0.0006
     },
 
 }
 
 // const maxYLayer4 = 300;
 let maxSLayer4 = 0;
-const scrollStartLayer4 = 888;
+const scrollStartLayer4 = 1600;
 
 
 
@@ -64,7 +72,7 @@ const Parallax = () => {
             } else {
                 maxSLayer4 = 0.55
             }
-            console.log(window.screen.availWidth)
+            
             if(scrollStart){
                 if(currentScrollPosition < scrollStart){
                     ref.style.transform = `scale(0)`
@@ -77,7 +85,7 @@ const Parallax = () => {
             let positionY = currentScrollPosition * multiplierY
             let scale = currentScrollPosition * multiplierS
 
-
+            console.log(currentScrollPosition)
             if(maxScale && scale > maxScale){
                 scale = maxScale
             }
@@ -114,6 +122,7 @@ const Parallax = () => {
 
     return(
         <ParallaxContainer>
+            <StaticBackground src={BackgroundImg}/>
             <Layer1 myRef={refLayer1}/>
             <Layer2 myRef={refLayer2}/>
             <Layer3 myRef={refLayer3}/>

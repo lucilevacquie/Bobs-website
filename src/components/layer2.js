@@ -1,12 +1,13 @@
 import React from "react"
 import styled from "styled-components"
-import Spaceship2 from "../assets/spaceship2.svg"
+import Spaceship2 from "../assets/RedSpaceship.svg"
 
 const Image = styled.img`
     position: fixed;
     width: 100px;
     top: 3rem;
     right: -8rem;
+    z-index: 2;
 `;
 
 const Layer2 = ({myRef}) => {

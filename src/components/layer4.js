@@ -5,6 +5,7 @@ import BobSpaceship from "../assets/BobsSpaceship.svg"
 const Container = styled.div`
     width: 100%;
     display: flex;
+    
 `;
 
 const Image = styled.img`
@@ -12,6 +13,7 @@ const Image = styled.img`
     width: 100%;
     transform: scale(0);
     top: 80px;
+    z-index: 4;
     @media only screen and (max-width: 1200px){
         top: 130px;
     }
