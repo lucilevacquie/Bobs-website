@@ -10,13 +10,14 @@ const Container = styled.div`
     justify-content: center;
     text-align: center;
     width: 100%;
-    top: -15%;
+    top: -18%;
     color: yellow;
     z-index: 4;
 `;
 
 const Name = styled.div`
-    font-size: 20px;
+    font-size: 3rem;
+    font-family: "Pixeboy";
     @media only screen and (max-width: 480px){
         font-size: 18px;
     }
@@ -25,6 +26,7 @@ const Name = styled.div`
 const Role = styled.div`
     font-size: 18px;
     margin: 5px;
+    color: #00ffdb;
     @media only screen and (max-width: 768px){
         font-size: 14px;
         margin: 4px;

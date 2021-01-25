@@ -5,7 +5,7 @@ import Spaceship3 from "../assets/SpaceshipYellow.svg"
 const Image = styled.img`
     position: fixed;
     width: 100px;
-    top: -5rem;
+    top: -6rem;
     left: -2rem;
     z-index: 3;
 `;
