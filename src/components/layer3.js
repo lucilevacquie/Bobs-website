@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import Spaceship3 from "../assets/spaceship3.svg"
+import Spaceship3 from "../assets/SpaceshipYellow.svg"
 
 const Image = styled.img`
     position: fixed;

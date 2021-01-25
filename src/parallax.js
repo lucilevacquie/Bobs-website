@@ -27,14 +27,14 @@ const multipliers = {
         s: 0.003
     },
     layer2:{
-        x: -0.6,
-        y: 0.5,
+        x: -0.4,
+        y: 0.35,
         s: 0.002
     },
     layer3:{
         x: 0.2,
-        y: 0.4,
-        s: 0.0009
+        y: 0.25,
+        s: 0.0008
     },
     layer4:{
         x: 0,
@@ -49,9 +49,10 @@ const multipliers = {
 
 }
 
-// const maxYLayer4 = 300;
 let maxSLayer4 = 0;
-const scrollStartLayer4 = 1600;
+let maxYText = 0;
+let scrollStartLayer4 = 0;
+let scrollStartText = 0;
 
 
 
@@ -65,12 +66,22 @@ const Parallax = () => {
     
     
     useEffect(() => {
-        const calculatePosition = (ref, multiplierX, multiplierY, multiplierS, currentScrollPosition, maxScale, scrollStart, maxPosition) => {
+        const calculatePosition = (ref, multiplierX, multiplierY, multiplierS, currentScrollPosition, scrollStart, maxScale, maxPosition) => {
             
             if(window.screen.availWidth < 1024){
                 maxSLayer4 = 0.75
             } else {
                 maxSLayer4 = 0.55
+            }
+
+            if(window.screen.availWidth < 480){
+                scrollStartLayer4 = 2110
+                scrollStartText = 2000
+                maxYText = 280
+            } else {
+                scrollStartLayer4 = 3500
+                scrollStartText = 2800
+                maxYText = 240
             }
             
             if(scrollStart){
@@ -101,8 +112,8 @@ const Parallax = () => {
             calculatePosition(refLayer1.current, multipliers.layer1.x, multipliers.layer1.y, multipliers.layer1.s, pos)
             calculatePosition(refLayer2.current, multipliers.layer2.x, multipliers.layer2.y, multipliers.layer2.s, pos)
             calculatePosition(refLayer3.current, multipliers.layer3.x, multipliers.layer3.y, multipliers.layer3.s, pos)
-            calculatePosition(refLayer4.current, multipliers.layer4.x, multipliers.layer4.y, multipliers.layer4.s, pos, maxSLayer4, scrollStartLayer4)
-            calculatePosition(refText.current, multipliers.text.x, multipliers.text.y, multipliers.text.s, pos)
+            calculatePosition(refLayer4.current, multipliers.layer4.x, multipliers.layer4.y, multipliers.layer4.s, pos,scrollStartLayer4, maxSLayer4)
+            calculatePosition(refText.current, multipliers.text.x, multipliers.text.y, multipliers.text.s, pos, scrollStartText, null, maxYText)
         }
 
         const callbackFunc = () => {

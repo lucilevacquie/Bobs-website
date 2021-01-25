@@ -3,7 +3,7 @@ import styled from "styled-components"
 import Parallax from "./parallax"
 
 const Container = styled.div`
-    height: 3500px;
+    height: 6000px;
     width: 100%;
     background-color: #0B1464;
 `;
