@@ -60,8 +60,6 @@ const Email = styled.a`
     }
 `;
 
-const Links = styled.div``;
-
 const Logo = styled.img`
     width: 30px;
     padding: 10px;
@@ -77,14 +75,14 @@ const Text = ({myRef}) => {
             <Name>Bob Hall</Name>
             <Role>Full Stack Software Engineer</Role>
             <Email href="mailto:bob@bob-hall.com" target="_blank" rel="noreferrer">bob@bob-hall.com</Email>
-            <Links>
+            <div>
                 <a href="https://www.linkedin.com/in/bob-hall-5503b162/" target="_blank" rel="noreferrer">
                     <Logo src={Linkedin} alt="LinkedIn"/>
                 </a>
                 <a href="https://github.com/cousinbenson" target="_blank" rel="noreferrer">
                     <Logo src={Github} alt="GitHub"/>
                 </a>
-            </Links>
+            </div>
         </Container>
     )
 }

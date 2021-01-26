@@ -67,9 +67,17 @@ const Parallax = () => {
     
     
     useEffect(() => {
-        const calculatePosition = (ref, multiplierX, multiplierY, multiplierS, currentScrollPosition, scrollStart, maxScale, maxPosition) => {
+        const calculatePosition = (
+            ref, 
+            multiplierX, 
+            multiplierY, 
+            multiplierS, 
+            currentScrollPosition, 
+            scrollStart, 
+            maxScale, 
+            maxPosition
+        ) => {
             
-            console.log(currentScrollPosition)
             if(window.screen.availWidth < 1024){
                 maxSLayer4 = 0.75
             } else {

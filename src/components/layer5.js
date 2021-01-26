@@ -33,11 +33,9 @@ const Image = styled.img`
 
 const Layer5 = ({myRef}) => {
     return (
-        <div>
-            <Container>
-                <Image ref={myRef} src={Earth} alt="earth"/>
-            </Container>
-        </div>
+        <Container>
+            <Image ref={myRef} src={Earth} alt="earth"/>
+        </Container>
     )
 }
 

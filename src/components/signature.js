@@ -7,20 +7,12 @@ const Container = styled.div`
     width: 100%;
     bottom: 0;
     font-family: 'Roboto', sans-serif;
-    color: #46C4EC;
-`;
-
-const MyName = styled.div`
+    color: white;
+    z-index: 2;
 `;
 
 const Signature = () => {
-    return (
-        <div>
-            <Container>
-                <MyName>Created and design by Lucile Vacquie</MyName>
-            </Container>
-        </div>
-    )
+    return <Container>Created and design by Lucile Vacquie</Container>
 }
 
 export default Signature;
