@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import BobSpaceship from "../assets/Bob.svg"
+import Earth from "../assets/Earth.svg"
 
 const Container = styled.div`
     width: 100%;
@@ -10,36 +10,35 @@ const Container = styled.div`
 
 const Image = styled.img`
     position: fixed;
-    width: 850px;
     transform: scale(0);
-    top: 140px;
-    z-index: 4;
+    z-index: 2;
+    width: 800px;
+    bottom: -630px;
     @media only screen and (max-width: 1200px){
-        top: 200px;
-        width: 740px;
+        width: 550px;
+        bottom: -530px;
     }
     @media only screen and (max-width: 1024px){
-        top: 230px;
-        width: 630px;
+        width: 530px;
     }
     @media only screen and (max-width: 768px){
-        top: 200px;
-        width: 550px;
+        bottom: -520px;
+        width: 590px;
     }
     @media only screen and (max-width: 480px){
-        top: 230px;
-        width: 340px;
+        bottom: -350px;
+        width: 370px;
     }
 `;
 
-const Layer3 = ({myRef}) => {
+const Layer5 = ({myRef}) => {
     return (
         <div>
             <Container>
-                <Image ref={myRef} src={BobSpaceship} alt="spaceship 3"/>
+                <Image ref={myRef} src={Earth} alt="earth"/>
             </Container>
         </div>
     )
 }
 
-export default Layer3;
+export default Layer5;

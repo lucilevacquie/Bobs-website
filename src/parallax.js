@@ -4,20 +4,14 @@ import Layer1 from "./components/layer1"
 import Layer2 from "./components/layer2"
 import Layer3 from "./components/layer3"
 import Layer4 from "./components/layer4"
+import Layer5 from "./components/layer5"
 import Text from "./components/text"
-import BackgroundImg from "./assets/StaticBackground.svg"
+import Signature from "./components/signature"
 
 const ParallaxContainer = styled.div`
     position: relative;
     width: 100%;
     height: 100%;
-`;
-
-const StaticBackground = styled.img`
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
 `;
 
 const multipliers = {
@@ -41,6 +35,11 @@ const multipliers = {
         y: 0,
         s: 0.0006
     },
+    layer5:{
+        x: 0,
+        y: -0.1,
+        s: 0.0006
+    },
     text:{
         x: 0,
         y: 0.1,
@@ -53,6 +52,7 @@ let maxSLayer4 = 0;
 let maxYText = 0;
 let scrollStartLayer4 = 0;
 let scrollStartText = 0;
+let scrollStartLayer5 = 0;
 
 
 
@@ -62,12 +62,14 @@ const Parallax = () => {
     const refLayer2 = useRef()
     const refLayer3 = useRef()
     const refLayer4 = useRef()
+    const refLayer5 = useRef()
     const refText = useRef()
     
     
     useEffect(() => {
         const calculatePosition = (ref, multiplierX, multiplierY, multiplierS, currentScrollPosition, scrollStart, maxScale, maxPosition) => {
             
+            console.log(currentScrollPosition)
             if(window.screen.availWidth < 1024){
                 maxSLayer4 = 0.75
             } else {
@@ -77,10 +79,12 @@ const Parallax = () => {
             if(window.screen.availWidth < 480){
                 scrollStartLayer4 = 2110
                 scrollStartText = 2000
+                scrollStartLayer5 = 3030
                 maxYText = 280
             } else {
                 scrollStartLayer4 = 3500
                 scrollStartText = 2800
+                scrollStartLayer5 = 3300
                 maxYText = 240
             }
             
@@ -96,7 +100,6 @@ const Parallax = () => {
             let positionY = currentScrollPosition * multiplierY
             let scale = currentScrollPosition * multiplierS
 
-            console.log(currentScrollPosition)
             if(maxScale && scale > maxScale){
                 scale = maxScale
             }
@@ -114,6 +117,7 @@ const Parallax = () => {
             calculatePosition(refLayer3.current, multipliers.layer3.x, multipliers.layer3.y, multipliers.layer3.s, pos)
             calculatePosition(refLayer4.current, multipliers.layer4.x, multipliers.layer4.y, multipliers.layer4.s, pos,scrollStartLayer4, maxSLayer4)
             calculatePosition(refText.current, multipliers.text.x, multipliers.text.y, multipliers.text.s, pos, scrollStartText, null, maxYText)
+            calculatePosition(refLayer5.current, multipliers.layer5.x, multipliers.layer5.y, multipliers.layer5.s, pos,scrollStartLayer5)
         }
 
         const callbackFunc = () => {
@@ -133,11 +137,12 @@ const Parallax = () => {
 
     return(
         <ParallaxContainer>
-            <StaticBackground src={BackgroundImg}/>
             <Layer1 myRef={refLayer1}/>
             <Layer2 myRef={refLayer2}/>
             <Layer3 myRef={refLayer3}/>
             <Layer4 myRef={refLayer4}/>
+            <Layer5 myRef={refLayer5}/>
+            <Signature/>
             <Text myRef={refText}/>
         </ParallaxContainer>
     )

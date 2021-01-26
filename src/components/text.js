@@ -10,14 +10,23 @@ const Container = styled.div`
     justify-content: center;
     text-align: center;
     width: 100%;
-    top: -18%;
+    top: -25%;
     color: yellow;
     z-index: 4;
+    @media only screen and (max-width: 768px){
+        top: -24%;
+    }
+    @media only screen and (max-width: 480px){
+        top: -25%;
+    }
 `;
 
 const Name = styled.div`
     font-size: 3rem;
     font-family: "Pixeboy";
+    @media only screen and (max-width: 768px){
+        font-size: 26px;
+    }
     @media only screen and (max-width: 480px){
         font-size: 18px;
     }
@@ -26,7 +35,8 @@ const Name = styled.div`
 const Role = styled.div`
     font-size: 18px;
     margin: 5px;
-    color: #00ffdb;
+    color: #46C4EC;
+    font-family: 'Roboto', sans-serif;
     @media only screen and (max-width: 768px){
         font-size: 14px;
         margin: 4px;
@@ -41,6 +51,7 @@ const Email = styled.a`
     font-size: 16px;
     text-decoration: none;
     color: yellow;
+    font-family: 'Roboto', sans-serif;
     @media only screen and (max-width: 768px){
         font-size: 14px;
     }
@@ -52,8 +63,12 @@ const Email = styled.a`
 const Links = styled.div``;
 
 const Logo = styled.img`
-    width: 20px;
-    margin: 0 2.5px;
+    width: 30px;
+    padding: 10px;
+    @media only screen and (max-width: 480px){
+        width: 20px;
+        padding: 5px;
+    }
 `;
 
 const Text = ({myRef}) => {
