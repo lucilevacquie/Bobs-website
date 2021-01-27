@@ -1,15 +1,14 @@
-import React, {useEffect} from "react"
-import './App.css';
+import React, { useEffect } from "react";
+import "./App.css";
 
-import Background from "./background"
+import Background from "./background";
 
 const App = () => {
-
   useEffect(() => {
-    window.scrollTo(0,0);
-  }, [])
+    window.scrollTo(0, 0);
+  }, []);
 
-  return <Background/>
-}
+  return <Background />;
+};
 
 export default App;
