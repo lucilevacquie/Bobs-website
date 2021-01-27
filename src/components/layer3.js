@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import Spaceship3 from "../assets/SpaceshipYellow.svg";
 
 const Image = styled.img`
     position: fixed;
@@ -11,7 +10,9 @@ const Image = styled.img`
 `;
 
 const Layer3 = ({ myRef }) => {
-    return <Image ref={myRef} src={Spaceship3} alt="spaceship 3" />;
+    return (
+        <Image ref={myRef} src="assets/SpaceshipYellow.svg" alt="spaceship 3" />
+    );
 };
 
 export default Layer3;

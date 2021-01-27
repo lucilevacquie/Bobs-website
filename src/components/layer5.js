@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import Earth from "../assets/Earth.svg";
 
 const Container = styled.div`
     width: 100%;
@@ -34,7 +33,7 @@ const Image = styled.img`
 const Layer5 = ({ myRef }) => {
     return (
         <Container>
-            <Image ref={myRef} src={Earth} alt="earth" />
+            <Image ref={myRef} src={"assets/Earth.svg"} alt="earth" />
         </Container>
     );
 };
