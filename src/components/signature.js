@@ -12,7 +12,7 @@ const Container = styled.div`
 `;
 
 const Signature = () => {
-    return <Container>Created and design by Lucile Vacquie</Container>;
+    return <Container>Created and designed by Lucile Vacquie</Container>;
 };
 
 export default Signature;

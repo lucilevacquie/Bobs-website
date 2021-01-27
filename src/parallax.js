@@ -7,6 +7,7 @@ import Layer4 from "./components/layer4";
 import Layer5 from "./components/layer5";
 import Text from "./components/text";
 import Signature from "./components/signature";
+import ScrollDown from "./components/scrollDown";
 
 const ParallaxContainer = styled.div`
     position: relative;
@@ -180,6 +181,7 @@ const Parallax = () => {
 
     return (
         <ParallaxContainer>
+            <ScrollDown />
             <Layer1 myRef={refLayer1} />
             <Layer2 myRef={refLayer2} />
             <Layer3 myRef={refLayer3} />
