@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import BobSpaceship from "../assets/Bob.svg";
+import { Bob } from "../assets";
 
 const Container = styled.div`
     width: 100%;
@@ -36,7 +36,7 @@ const Layer3 = ({ myRef }) => {
     return (
         <div>
             <Container>
-                <Image ref={myRef} src={BobSpaceship} alt="spaceship 3" />
+                <Image ref={myRef} src={Bob} alt="spaceship 3" />
             </Container>
         </div>
     );
