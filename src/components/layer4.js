@@ -11,7 +11,7 @@ const Image = styled.img`
     position: fixed;
     width: 850px;
     transform: scale(0);
-    top: 140px;
+    top: 200px;
     z-index: 4;
     @media only screen and (max-width: 1200px) {
         top: 200px;

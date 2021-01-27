@@ -42,16 +42,14 @@ const multipliers = {
         s: 0.0006,
     },
     text: {
+        startY: -400,
         x: 0,
         y: 0.1,
-        s: 0.0006,
     },
 };
 
 let maxSLayer4 = 0;
-let maxYText = 0;
 let scrollStartLayer4 = 0;
-let scrollStartText = 0;
 let scrollStartLayer5 = 0;
 
 const Parallax = () => {
@@ -74,21 +72,17 @@ const Parallax = () => {
             maxPosition
         ) => {
             if (window.screen.availWidth < 1024) {
-                maxSLayer4 = 0.75;
+                maxSLayer4 = 0.85;
             } else {
-                maxSLayer4 = 0.55;
+                maxSLayer4 = 0.65;
             }
 
             if (window.screen.availWidth < 480) {
                 scrollStartLayer4 = 2110;
-                scrollStartText = 2000;
                 scrollStartLayer5 = 3030;
-                maxYText = 280;
             } else {
                 scrollStartLayer4 = 3500;
-                scrollStartText = 2800;
                 scrollStartLayer5 = 3300;
-                maxYText = 240;
             }
 
             if (scrollStart) {
@@ -112,6 +106,15 @@ const Parallax = () => {
             }
 
             ref.style.transform = `translate3d(${positionX}px, ${positionY}px, 0) scale3d(${scale}, ${scale}, ${scale})`;
+        };
+
+        const deductYPos = (ref, mult, start, pos) => {
+            const nextPos = start + pos * mult;
+            if (nextPos >= 0) return;
+
+            ref.style.transform = `translate3d(${0}px, ${
+                start + pos * mult
+            }px, 0)`;
         };
 
         const updatePosition = (pos) => {
@@ -145,15 +148,12 @@ const Parallax = () => {
                 scrollStartLayer4,
                 maxSLayer4
             );
-            calculatePosition(
+
+            deductYPos(
                 refText.current,
-                multipliers.text.x,
                 multipliers.text.y,
-                multipliers.text.s,
-                pos,
-                scrollStartText,
-                null,
-                maxYText
+                multipliers.text.startY,
+                pos
             );
             calculatePosition(
                 refLayer5.current,
@@ -171,6 +171,8 @@ const Parallax = () => {
                 updatePosition(currentScrollPosition);
             }, 0);
         };
+
+        window.scrollTo(0, 0);
 
         document.addEventListener("scroll", callbackFunc);
 
